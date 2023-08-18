@@ -1,33 +1,35 @@
-const box = document.querySelector('.box');
+const btns = document.querySelectorAll('.list li');
 
-box.addEventListener('click', e => {
-    e.currentTarget.style.backgroundColor = 'hotpink';
-    e.currentTarget.style.width = 200+'px';
-    console.log(getComputedStyle(e.currentTarget).width);
+/* for (let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener('click', e => {
+        e.preventDefault();
+        console.log(i);
+    })
+}
+    
+
+for (let btn of btns) {
+    btn.addEventListener('click', e => {
+        console.log(e.currentTarget);
+    })
+}
+ */
+
+btns.forEach((btn,index,array) => {
+    btn.addEventListener('click', e => {
+        isOn = e.currentTarget.classList.contains('on');
+        if (isOn) return;
+        for (let item of btns) item.classList.remove('on');
+        btns[index].classList.add('on');
+    })
 })
 
-const box2 = document.querySelector('.box2');
+/* const myArr = [1, 2, 3, 4, 5];
 
-box2.addEventListener('click', e => {
-    /*  const style = getComputedStyle(e.currentTarget);
-    console.log(style['background-color']);   or  */
-    const bg = getComputedStyle(e.currentTarget).backgroundColor;
-    const wid = getComputedStyle(e.currentTarget).width;
-    console.log(bg);
-    console.log(wid);
-})
+const newMyArr = myArr.forEach((currentElement, index, array) => {
+    console.log(`요소: ${currentElement}`);
+    console.log(`index: ${index}`);
+    console.log(array);
+});
 
-const a = document.querySelector('a');
-
-console.log(a.getAttribute('href'));
-console.log(a.getAttribute('target'));
-console.log(a.getAttribute('title'));
-
-a.setAttribute('href', 'http://www.nate.com')
-a.setAttribute('target', '_self');
-a.setAttribute('title', '네이트로 이동');
-a.innerText = '네이트';
-
-console.log(a.getAttribute('href'));
-console.log(a.getAttribute('target'));
-console.log(a.getAttribute('title'));
+console.log(newMyArr); // undefined */
